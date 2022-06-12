@@ -13,8 +13,6 @@ public class CalculatorController {
     public CalculatorController(CalculatorService calculatorService){
         this.calculatorService = calculatorService;
     }
-
-
     @GetMapping
     public String hello () {
         return calculatorService.hello();
@@ -30,7 +28,6 @@ public class CalculatorController {
             return number1 + " + " + number2 + " = " + calculatorService.answerCalcutatorPlus(number1,number2);
         }
     }
-
     @GetMapping("/minus")
     public String answerCalcutatorMinus  (@RequestParam(value = "num1", required = false) Integer number1,
                                        @RequestParam(value = "num2",required = false) Integer number2) {
@@ -41,7 +38,6 @@ public class CalculatorController {
             return number1 + " - " + number2 + " = " + calculatorService.answerCalcutatorMinus(number1,number2);
         }
     }
-
     @GetMapping("/multiply")
     public String answerCalcutatorMultiply  (@RequestParam(value = "num1", required = false) Integer number1,
                                           @RequestParam(value = "num2",required = false) Integer number2) {
@@ -52,7 +48,6 @@ public class CalculatorController {
         }
 
     }
-
     @GetMapping("/divide")
     public String answerCalcutatorDivide  (@RequestParam(value = "num1", required = false) Float number1,
                                            @RequestParam(value = "num2",required = false) Float number2) {
