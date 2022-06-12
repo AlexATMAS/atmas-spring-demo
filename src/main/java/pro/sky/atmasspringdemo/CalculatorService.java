@@ -2,6 +2,7 @@ package pro.sky.atmasspringdemo;
 
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class CalculatorService {
@@ -10,45 +11,22 @@ public class CalculatorService {
     } ///Приветствие;
 
 
-    public String answerCalcutatorPlus(String number1, String number2) {
-        if (number1.isEmpty() || number2.isEmpty()){
-            return "ОШИБКА! Повторите ввод!";
-        }else {
-            int sum = Integer.parseInt(number1) + Integer.parseInt(number2);
-            return number1 + "+" + number2 + "=" + sum;
-        }
+    public int answerCalcutatorPlus(int number1, int number2) {
+        return number1 + number2;
     } ///Сумма;
 
-    public String answerCalcutatorMinus(String number1, String number2) {
-        if (number1.isEmpty() || number2.isEmpty()){
-            return "ОШИБКА! Повторите ввод!";
-        }else {
-            int diff = Integer.parseInt(number1) - Integer.parseInt(number2);
-            return number1 + "-" + number2 + "=" + diff;
-        }
-
-
+    public int answerCalcutatorMinus(int number1, int number2) {
+        return number1 - number2;
     }///Разность;
 
-    public String answerCalcutatorMultiply(String number1, String number2) {
-        if (number1.isEmpty() || number2.isEmpty()){
-            return "ОШИБКА! Повторите ввод!";
-        }else {
-            int multy = Integer.parseInt(number1)* Integer.parseInt(number2);
-            return number1 + "*" + number2 + "=" + multy;
-        }
+    public int answerCalcutatorMultiply(int number1, int number2) {
+        return number1 * number2;
+
 
     }///Умножение:
 
-    public String answerCalcutatorDivide(String number1, String number2) {
-
-        if (number1.isEmpty() || number2.isEmpty()){
-            return "ОШИБКА! Повторите ввод!";
-        }else if (number1.equals("0") || number2.equals("0")){
-            return "ОШИБКА! На 0 делить нельзя!";
-        }else {
-            float divide =  Float.parseFloat(number1) / Float.parseFloat(number2);
-            return number1 + "/" + number2 + "=" + divide;
-        }
+    public float answerCalcutatorDivide(float number1,float number2) {
+        return number1 / number2;
     }///Деление;
 }
+

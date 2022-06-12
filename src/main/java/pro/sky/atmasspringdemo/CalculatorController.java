@@ -1,9 +1,9 @@
 package pro.sky.atmasspringdemo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
+
 
 @RestController
 @RequestMapping("/calculator")
@@ -21,24 +21,47 @@ public class CalculatorController {
     }
 
 
-    @RequestMapping("/plus")
-    public String answerCalcutatorPlus  (@RequestParam("num1") String number1,@RequestParam("num2") String number2) {
-        return calculatorService.answerCalcutatorPlus(number1,number2);
+    @GetMapping("/plus")
+    public String answerCalcutatorPlus  (@RequestParam(value = "num1", required = false) Integer number1,
+                                      @RequestParam(value = "num2",required = false) Integer number2) {
+        if (Objects.isNull(number1) || Objects.isNull(number2)){
+            return "Проверте введенные данные!";
+        }else {
+            return number1 + " + " + number2 + " = " + calculatorService.answerCalcutatorPlus(number1,number2);
+        }
     }
 
-    @RequestMapping("/minus")
-    public String answerCalcutatorMinus  (@RequestParam("num1") String number1,@RequestParam("num2") String number2) {
-        return calculatorService.answerCalcutatorMinus(number1,number2);
+    @GetMapping("/minus")
+    public String answerCalcutatorMinus  (@RequestParam(value = "num1", required = false) Integer number1,
+                                       @RequestParam(value = "num2",required = false) Integer number2) {
+
+        if (Objects.isNull(number1) || Objects.isNull(number2)){
+            return "Проверте введенные данные!";
+        }else {
+            return number1 + " - " + number2 + " = " + calculatorService.answerCalcutatorMinus(number1,number2);
+        }
     }
 
-    @RequestMapping("/multiply")
-    public String answerCalcutatorMultiply  (@RequestParam("num1") String number1,@RequestParam("num2") String number2) {
-        return calculatorService.answerCalcutatorMultiply(number1,number2);
+    @GetMapping("/multiply")
+    public String answerCalcutatorMultiply  (@RequestParam(value = "num1", required = false) Integer number1,
+                                          @RequestParam(value = "num2",required = false) Integer number2) {
+        if (Objects.isNull(number1) || Objects.isNull(number2)){
+            return "Проверте введенные данные!";
+        }else {
+            return number1 + " * " + number2 + " = " + calculatorService.answerCalcutatorMultiply(number1,number2);
+        }
+
     }
 
-    @RequestMapping("/divide")
-    public String answerCalcutatorDivide  (@RequestParam("num1") String number1,@RequestParam("num2") String number2) {
-        return calculatorService.answerCalcutatorDivide(number1,number2);
+    @GetMapping("/divide")
+    public String answerCalcutatorDivide  (@RequestParam(value = "num1", required = false) Float number1,
+                                           @RequestParam(value = "num2",required = false) Float number2) {
+        if (Objects.isNull(number1) || Objects.isNull(number2)){
+            return "Проверте введенные данные!";
+        }else if (number1 == 0 || number2 == 0){
+            return  "Деление на 0 запрещено!";
+        }else {
+            return number1 + " / " + number2 + " = " + calculatorService.answerCalcutatorDivide(number1,number2);
+        }
     }
-
 }
